@@ -1,0 +1,52 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.out
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.elf
+*.bin
+*.lst
+*.rd
+*.map
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+*.user
+*.jdebug.user
+*.jdebug
+
+# Text editor configuration
+.idea/
+.vscode/
+.settings/
+*.sublime-workspace
+
+# Patch cache
+*.orig
+
+# Build directory
+build/
+compile_commands.json
+.ccls-cache
+.vagrant
+
+# dot files
+.mxproject
+
+# macOS layout files
+**/.DS_Store
+
+# VirtualBox error log
+*.log
