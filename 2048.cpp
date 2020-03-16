@@ -60,8 +60,8 @@ class Gameboard
     bool checkLose()
     {
         bool lose = false;
-        int remainSpace = 0;
         bool stack = true;
+        remainSpace = 0;
         for (int i = 0; i < 3; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -94,11 +94,34 @@ class Gameboard
             srand((unsigned)time(0));
             int newNum = 0, place = 0;
             newNum = ((rand() % 2) + 1) * 2;
-            place = rand() % 8;
-            if (array[place / 3][place % 3] == 0)
-                array[place / 3][place % 3] = newNum;
+            if (remainSpace != 1)
+            {
+                place = rand() % remainSpace;
+                int *pointers[9] = {nullptr};
+                for (int i = 0; i < 9; i++)
+                {
+                    for (int row = 0; row < 3; row++)
+                    {
+                        for (int col = 0; col < 3; col++)
+                        {
+                            if (array[row][col] == 0)
+                                pointers[i] = &array[row][col];
+                        }
+                    }
+                }
+                *pointers[place] = newNum;
+            }
             else
-                randomGenerate();
+            {
+                for (int row = 0; row < 3; row++)
+                {
+                    for (int col = 0; col < 3; col++)
+                    {
+                        if (array[row][col] == 0)
+                            array[row][col] = newNum;
+                    }
+                }
+            }
         }
     }
 
