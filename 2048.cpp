@@ -88,23 +88,23 @@ class Gameboard
     }
     void randomGenerate()
     {
-        if(remainSpace > 0)
+        if (remainSpace > 0)
         {
             // ramdom generate 2 or 4 at random place
-        srand((unsigned)time(0));
-        int newNum = 0, place = 0;
-        newNum = ((rand() % 2) + 1) * 2;
-        place = rand() % 8;
-        if (array[place / 3][place % 3] == 0)
-            array[place / 3][place % 3] = newNum;
-        else
-            randomGenerate();
+            srand((unsigned)time(0));
+            int newNum = 0, place = 0;
+            newNum = ((rand() % 2) + 1) * 2;
+            place = rand() % 8;
+            if (array[place / 3][place % 3] == 0)
+                array[place / 3][place % 3] = newNum;
+            else
+                randomGenerate();
         }
     }
 
    private:
     int array[3][3] = {0};
-    int remainspace = 8 ;
+    int remainSpace = 8;
     void moveUp()
     {
         for (int col = 0; col < 3; col++)
@@ -141,7 +141,7 @@ class Gameboard
             // loop twice in case there are two '0's
             for (int i = 0; i < 2; i++)
             {
-                for (int row = 2; row >0; row--)
+                for (int row = 2; row > 0; row--)
                 {
                     if (array[row][col] == 0)
                     {
@@ -174,8 +174,8 @@ class Gameboard
                 {
                     if (array[row][col] == 0)
                     {
-                        array[row][col] = array[row][col+1];
-                        array[row][col+1] = 0;
+                        array[row][col] = array[row][col + 1];
+                        array[row][col + 1] = 0;
                     }
                 }
             }
@@ -203,8 +203,8 @@ class Gameboard
                 {
                     if (array[row][col] == 0)
                     {
-                        array[row][col] = array[row][col -1];
-                        array[row][col -1] = 0;
+                        array[row][col] = array[row][col - 1];
+                        array[row][col - 1] = 0;
                     }
                 }
             }
@@ -238,7 +238,7 @@ int main()
             cout << "You lose! Try again." << endl;
             break;
         }
-        if(gameboard.checkWin())
+        if (gameboard.checkWin())
         {
             cout << "Win!!!" << endl;
             break;
