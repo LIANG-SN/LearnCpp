@@ -120,7 +120,8 @@ int sortDigit(int number, bool order)
 int isKaprekar6174(int number, bool debug)
 {
     int step = 0;
-    if ((isRepdigit(number)) || ((number / 1000) == 0 )|| ((number / 1000) >= 10))
+    if ((isRepdigit(number)) || ((number / 1000) == 0) ||
+        ((number / 1000) >= 10))
     {
         step = -1;
         if (debug)
@@ -132,6 +133,14 @@ int isKaprekar6174(int number, bool debug)
     {
         do
         {
+            if (debug)
+            {
+                cout << sortDigit(number, DESCENDING) << "-"
+                     << sortDigit(number, ASCENDING) << "="
+                     << sortDigit(number, DESCENDING) -
+                            sortDigit(number, ASCENDING)
+                     << endl;
+            }
             number =
                 sortDigit(number, DESCENDING) - sortDigit(number, ASCENDING);
             if (number < 10)
@@ -143,11 +152,7 @@ int isKaprekar6174(int number, bool debug)
             else
                 ;
             step++;
-            if (debug)
-            {
-                cout << sortDigit(number, DESCENDING) << "-"
-                     << sortDigit(number, ASCENDING) << "=" << number << endl;
-            }
+
         } while (number != 6174);
     }
     return step;
