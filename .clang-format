@@ -6,10 +6,10 @@ AllowShortBlocksOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AllowAllParametersOfDeclarationOnNextLine: true
-BinPackParameters: false
-BinPackArguments: false
+BinPackParameters: true
+BinPackArguments: true
 BreakBeforeBraces: Allman
-ColumnLimit: 80
+ColumnLimit: 96
 PointerAlignment: Right
 DerivePointerAlignment: false
 IndentCaseLabels: false
