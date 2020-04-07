@@ -107,32 +107,32 @@ int bite(char figure[][SIZE], int x, int y, bool is_lazy, bool debug)
         }
         if (is_lazy)
         {
-            if (figure[x][y + 1] == '.' && (y + 1) <= SIZE - 1)
+            if ((y + 1) <= SIZE - 1)
                 step += bite(figure, x, y + 1, is_lazy, debug);
-            if (figure[x][y - 1] == '.' && (y - 1) >= 0)
+            if ((y - 1) >= 0)
                 step += bite(figure, x, y - 1, is_lazy, debug);
-            if (figure[x + 1][y] == '.' && (x + 1) <= SIZE - 1)
+            if ((x + 1) <= SIZE - 1)
                 step += bite(figure, x + 1, y, is_lazy, debug);
-            if (figure[x - 1][y] == '.' && (x - 1) >= 0)
+            if ((x - 1) >= 0)
                 step += bite(figure, x - 1, y, is_lazy, debug);
         }
         if (!is_lazy)
         {
-            if (figure[x][y + 1] == '.' && (y + 1) <= SIZE - 1)
+            if ((y + 1) <= SIZE - 1)
                 step += bite(figure, x, y + 1, is_lazy, debug);
-            if (figure[x][y - 1] == '.' && (y - 1) >= 0)
+            if ((y - 1) >= 0)
                 step += bite(figure, x, y - 1, is_lazy, debug);
-            if (figure[x + 1][y] == '.' && (x + 1) <= SIZE - 1)
+            if ((x + 1) <= SIZE - 1)
                 step += bite(figure, x + 1, y, is_lazy, debug);
-            if (figure[x - 1][y] == '.' && (x - 1) >= 0)
+            if ((x - 1) >= 0)
                 step += bite(figure, x - 1, y, is_lazy, debug);
-            if (figure[x + 1][y + 1] == '.' && (x + 1) <= SIZE - 1 && (y + 1) <= SIZE - 1)
+            if ((x + 1) <= SIZE - 1 && (y + 1) <= SIZE - 1)
                 step += bite(figure, x + 1, y + 1, is_lazy, debug);
-            if (figure[x + 1][y - 1] == '.' && (y - 1) >= 0 && (x + 1) <= SIZE - 1)
+            if ((y - 1) >= 0 && (x + 1) <= SIZE - 1)
                 step += bite(figure, x + 1, y - 1, is_lazy, debug);
-            if (figure[x - 1][y + 1] == '.' && (y + 1) <= SIZE - 1 && (x - 1) >= 0)
+            if ((y + 1) <= SIZE - 1 && (x - 1) >= 0)
                 step += bite(figure, x + 1, y + 1, is_lazy, debug);
-            if (figure[x - 1][y - 1] == '.' && (y - 1) >= 0 && (x - 1) >= 0)
+            if ((y - 1) >= 0 && (x - 1) >= 0)
                 step += bite(figure, x - 1, y - 1, is_lazy, debug);
         }
     }
@@ -255,7 +255,6 @@ int main()
     default:
         cout << "Not Yet Implemented" << endl;
         return 0;
-        // replace default case with the following one if you finish 'random_figure'
         // default: random_figure(figure); break;
     }
     print_figure(figure);
