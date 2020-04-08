@@ -85,7 +85,7 @@ void step(int dest[][MAX_SIZE], int x, int y, int size)
         dest[x - 1][y] = (dest[x - 1][y] + 1) % 2;
     if (y + 1 < size)
         dest[x][y + 1] = (dest[x][y + 1] + 1) % 2;
-    if (y + 1 >= 0)
+    if (y - 1 >= 0)
         dest[x][y - 1] = (dest[x][y - 1] + 1) % 2;
 }
 
@@ -103,8 +103,15 @@ bool check_win(int dest[][MAX_SIZE], int size)
     return is_win;
 }
 
-void find_solution(int solution_puzzle[][MAX_SIZE], int dest[][MAX_SIZE], int size)
+/**
+ * @brief find solution by enumeration
+ *
+ * @param dest
+ * @param size
+ */
+void find_solution(int dest[][MAX_SIZE], int size)
 {
+    int solution_figure[MAX_SIZE][MAX_SIZE] = {0};
     for (int solution_num = 0; solution_num <= pow(2, (size * size)) - 1; solution_num++)
     {
         bool is_solution = true;
@@ -114,14 +121,14 @@ void find_solution(int solution_puzzle[][MAX_SIZE], int dest[][MAX_SIZE], int si
             {
                 int move_digit = size * row + col;
                 if (((solution_num >> move_digit) % 2) == 1)
-                    step(solution_puzzle, row, col, size);
+                    step(solution_figure, row, col, size);
             }
         }
         for (int row = 0; row < size; row++)
         {
             for (int col = 0; col < size; col++)
             {
-                if (dest[row][col] != solution_puzzle[row][col])
+                if (dest[row][col] != solution_figure[row][col])
                     is_solution = false;
             }
         }
@@ -146,13 +153,52 @@ void find_solution(int solution_puzzle[][MAX_SIZE], int dest[][MAX_SIZE], int si
             {
                 for (int col = 0; col < size; col++)
                 {
-                    solution_puzzle[row][col] = 0;
+                    solution_figure[row][col] = 0;
                 }
             }
         }
     }
 }
-
+/**
+ * @brief recursively find solution.
+ * There are two paths in recursion, judge whether step the certain grid or not.
+ *
+ * @param dest
+ * @param size
+ * @param curr
+ * @return true
+ * @return false
+ */
+bool recursive_find(int dest[][MAX_SIZE], int size, int curr)
+{
+    if (check_win(dest, size))
+        return true;
+    if (curr == size * size)
+        return false;
+    if (recursive_find(dest, size, curr + 1))
+        return true;
+    step(dest, curr / size, curr % size, size);
+    if (recursive_find(dest, size, curr + 1))
+    {
+        cout << "(" << curr / size << "," << curr % size << ")"
+             << " ";
+        return true;
+    }
+    step(dest, curr / size, curr % size, size);
+    return false;
+}
+void find_solution_recursively(int dest[][MAX_SIZE], int size)
+{
+    int copy[MAX_SIZE][MAX_SIZE] = {0};
+    for (int row = 0; row < size; row++)
+    {
+        for (int col = 0; col < size; col++)
+        {
+            copy[row][col] = dest[row][col];
+        }
+    }
+    recursive_find(copy, size, 0);
+}
 // main function
 int main()
 {
@@ -166,7 +212,6 @@ int main()
 
     // figure is a 2D array that stores the states of all lights. 1 for on and 0 for off.
     int figure[MAX_SIZE][MAX_SIZE] = {};
-    int solution_puzzle[MAX_SIZE][MAX_SIZE] = {};
 
     init_figure(figure, size);
 
@@ -181,7 +226,7 @@ int main()
         }
 
         if (is_show_solution)
-            find_solution(solution_puzzle, figure, size);
+            find_solution_recursively(figure, size);
         cout << "Please choose a location (x, y)" << endl;
         cin >> x >> y;
         step(figure, x, y, size);
