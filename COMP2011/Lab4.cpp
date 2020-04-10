@@ -1,3 +1,13 @@
+/**
+ * @file Lab4.cpp
+ * @author your name (you@domain.com)
+ * @brief 2048 game
+ * @version 0.1
+ * @date 2020-04-09
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <iostream>
 
 #include "stdlib.h"

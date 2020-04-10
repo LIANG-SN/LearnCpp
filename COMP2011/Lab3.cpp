@@ -1,3 +1,13 @@
+/**
+ * @file Lab3.cpp
+ * @author your name (you@domain.com)
+ * @brief Area of Eclipse
+ * @version 0.1
+ * @date 2020-04-09
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <iomanip>
 #include <iostream>
 

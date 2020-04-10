@@ -1,3 +1,13 @@
+/**
+ * @file Lab6.cpp
+ * @author Liang Shengnan liangsn@outlook.com
+ * @brief Zombie game
+ * @version 0.1
+ * @date 2020-04-09
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <cstdlib>
 #include <ctime>
 #include <iostream>

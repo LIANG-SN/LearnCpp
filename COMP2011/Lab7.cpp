@@ -1,5 +1,12 @@
-/* COMP2011 Spring 2020
- * Lab 7: Lights Out
+/**
+ * @file Lab7.cpp
+ * @author Liang shengnan liangsn@outlook.com
+ * @brief Lights out puzzle
+ * @version 0.1
+ * @date 2020-04-09
+ * 
+ * @copyright Copyright (c) 2020
+ * 
  */
 
 #include <math.h>

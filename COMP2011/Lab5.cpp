@@ -1,7 +1,7 @@
 /**
- * @file ShuttlePuzzle.cpp
+ * @file Lab5.cpp
  * @author Shengnan Liang (liangsn2001@outlook.com)
- * @brief
+ * @brief Shuttle Puzzle
  * @version 0.1
  * @date 2020-03-24
  *

@@ -1,3 +1,13 @@
+/**
+ * @file Lab2.cpp
+ * @author your name (you@domain.com)
+ * @brief Bridge and Torch
+ * @version 0.1
+ * @date 2020-04-09
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <iostream>
 
 using namespace std;
