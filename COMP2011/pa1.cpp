@@ -30,7 +30,7 @@ const bool DEBUG = true;
 int selectDigit(int number, int index)
 {
     int length = 0, digit = 0;
-    while ((10 ^ length) <= number)
+    while ((pow(10,length)) <= number)
         length++;
     if (index < 0 || index >= length)
         digit = -1;

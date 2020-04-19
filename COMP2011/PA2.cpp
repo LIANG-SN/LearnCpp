@@ -48,7 +48,7 @@ unsigned int count_dquotes(const char line[], int start)
 {
     if (line[start] == END)
         return 0;
-    if (line[start] == DQUOTE)
+    else if (line[start] == DQUOTE)
         return count_dquotes(line, start + 1) + 1;
     else
         return count_dquotes(line, start + 1);
