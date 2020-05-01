@@ -4,8 +4,8 @@
 #include <ctime>
 #include <iostream>
 #include <fstream>
+#include <list>
 using namespace std;
-
 // main function
 int main()
 {
