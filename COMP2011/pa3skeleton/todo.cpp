@@ -2,10 +2,12 @@
 // if you need to write your own helper functions, write the functions in this file
 // again, do NOT include additional libraries and make sure this todo.cpp can be compiled with
 // the unmodified versions of the other given files in our official compilation environment
+
 #include "given.h"
+
 #include "todo.h"
 
-using namespace std;
+
 int max(int a, int b) { return a > b ? a : b; }
 void del(char *&array_ptr)
 {
@@ -202,8 +204,8 @@ Place *getPlaces(char **csvLines, int csvLineCount)
             char *date;
             getNextSubstring(csvLines[line], date, start);
             numbers[day] = atoi(date);
-            delete [] date;
-	    start = getNextComma(csvLines[line], start) + 1;
+            delete[] date;
+            start = getNextComma(csvLines[line], start) + 1;
         }
         int startDay = 1;
         while (startDay <= dayNum && numbers[startDay - 1] == 0)
@@ -227,7 +229,7 @@ int mergeAllProvinces(Place *&places, int placeCount, const char *home)
             newPlaceCount++;
 
             int length = strlen(home);
-            char *homeName = new char[length + 6];
+            char *homeName = new char[length + 6 + 1];
             strcpy(homeName, home);
             strcat(homeName, "(Home)");
             newPlacesTemp[newPlaceCount - 1].region = homeName;
@@ -250,7 +252,7 @@ int mergeAllProvinces(Place *&places, int placeCount, const char *home)
                         newPlaceCount++;
 
                         int length = strlen(home);
-                        char *homeName = new char[length + 6];
+                        char *homeName = new char[length + 6 + 1];
                         strcpy(homeName, home);
                         strcat(homeName, "(Home)");
                         del(places[j].province);
@@ -266,7 +268,7 @@ int mergeAllProvinces(Place *&places, int placeCount, const char *home)
                             maxday = max(maxday, p->day);
                         for (Node *p = places[j].headNode; p != nullptr; p = p->next)
                             maxday = max(maxday, p->day);
-                        int *numbers = new int[maxday - 1];
+                        int *numbers = new int[maxday];
                         for (int i = 0; i < maxday; i++)
                             numbers[i] = 0;
                         for (Node *p = places[i].headNode; p != nullptr; p = p->next)
@@ -281,8 +283,8 @@ int mergeAllProvinces(Place *&places, int placeCount, const char *home)
                             startDay++;
                         if (startDay <= maxday)
                             places[i].headNode = createNodes(startDay, maxday, numbers);
-                        delete [] numbers;
-	   		del(places[j].province);
+                        delete[] numbers;
+                        del(places[j].province);
                         del(places[j].region);
                         deleteAllNodes(places[j].headNode);
                     }
