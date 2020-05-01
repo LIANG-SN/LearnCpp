@@ -2,10 +2,8 @@
 // if you need to write your own helper functions, write the functions in this file
 // again, do NOT include additional libraries and make sure this todo.cpp can be compiled with
 // the unmodified versions of the other given files in our official compilation environment
-
-#include "todo.h"
-
 #include "given.h"
+#include "todo.h"
 
 using namespace std;
 int max(int a, int b) { return a > b ? a : b; }
@@ -204,7 +202,8 @@ Place *getPlaces(char **csvLines, int csvLineCount)
             char *date;
             getNextSubstring(csvLines[line], date, start);
             numbers[day] = atoi(date);
-            start = getNextComma(csvLines[line], start) + 1;
+            delete [] date;
+	    start = getNextComma(csvLines[line], start) + 1;
         }
         int startDay = 1;
         while (startDay <= dayNum && numbers[startDay - 1] == 0)
@@ -282,7 +281,8 @@ int mergeAllProvinces(Place *&places, int placeCount, const char *home)
                             startDay++;
                         if (startDay <= maxday)
                             places[i].headNode = createNodes(startDay, maxday, numbers);
-                        del(places[j].province);
+                        delete [] numbers;
+	   		del(places[j].province);
                         del(places[j].region);
                         deleteAllNodes(places[j].headNode);
                     }

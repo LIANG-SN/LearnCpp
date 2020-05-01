@@ -12,7 +12,7 @@ int main()
     cout << "=======================================================" << endl;
     int csvLineCount;
     const char* csvFileName = "time_series_covid19_confirmed_global.csv";
-    csvFileName = "test.csv"; //uncomment this to read the other file "test.csv"
+    //csvFileName = "test.csv"; //uncomment this to read the other file "test.csv"
     cout << "Reading the CSV file..." << endl;
     char** csvLines = readCSV(csvFileName, csvLineCount);
     if(csvLines == nullptr)
