@@ -115,10 +115,12 @@ void Region::readline(char *line)
 
     getNextSubstring(line, char2IntBuffer, start);
     this->population = atoi(char2IntBuffer);
+    delete[] char2IntBuffer;
     start = getNextComma(line, start) + 1;
 
     getNextSubstring(line, char2IntBuffer, start);
     this->area = atoi(char2IntBuffer);
+    delete[] char2IntBuffer;
     start = getNextComma(line, start) + 1;
 
     this->raw = new DayStat[nday];
@@ -126,13 +128,14 @@ void Region::readline(char *line)
     {
         getNextSubstring(line, char2IntBuffer, start);
         double cases = atoi(char2IntBuffer);
+        delete[] char2IntBuffer;
         start = getNextComma(line, start) + 1;
         getNextSubstring(line, char2IntBuffer, start);
         double deaths = atoi(char2IntBuffer);
+        delete[] char2IntBuffer;
         start = getNextComma(line, start) + 1;
         this->raw[i] = DayStat(cases, deaths);
     }
-
 }
 
 Region::~Region()
@@ -260,6 +263,9 @@ int readcsv(Region *&region, const char *csvFileName)
     {
         region[i].readline(lines[i + 1]);
     }
+    for (int i = 0; i < csvLineCount; i++)
+        delete[] lines[i];
+    delete[] lines;
     return csvLineCount - 1;
 }
 
